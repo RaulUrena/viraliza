@@ -1,0 +1,87 @@
+---
+import FeatureCard from "./ui/FeatureCard.astro";
+
+const channels = [
+  {
+    label: "X",
+    handle: "@ViralizaIo",
+    href: "https://x.com/ViralizaIo",
+    external: true,
+  },
+  {
+    label: "Email",
+    handle: "partnerships@viraliza.io",
+    href: "mailto:partnerships@viraliza.io",
+    external: false,
+  },
+  {
+    label: "Telegram",
+    handle: "@Viralizasupport",
+    href: "https://t.me/Viralizasupport",
+    external: true,
+  },
+];
+---
+
+<section class="contact" id="contact" aria-labelledby="contact-heading">
+  <div class="container contact__inner" data-reveal="section">
+    <header class="section-header section-header--center">
+      <p class="eyebrow" data-reveal-item>Start now</p>
+      <h2 id="contact-heading" class="section-title" data-reveal-item>
+        Ready to <span class="gradient-text">grow your revenue?</span>
+      </h2>
+      <span class="section-line" data-reveal-item></span>
+      <p class="lede lede--bright contact__copy" data-reveal-item>
+        Tell us about your community. We'll review your setup, match you to the right exchange deal, and get you earning — no upfront cost.
+      </p>
+    </header>
+
+    <ul class="contact__channels" role="list">
+      {channels.map(({ label, handle, href, external }) => (
+        <FeatureCard
+          title={label}
+          desc={handle}
+          href={href}
+          external={external}
+        />
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding-block: 7rem 8rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .contact__copy {
+    margin-top: 1.25rem;
+    margin-inline: auto;
+  }
+
+  .contact__channels {
+    display: grid;
+    gap: 1.25rem;
+    list-style: none;
+    max-width: 48rem;
+    margin-inline: auto;
+    margin-top: 2.5rem;
+    padding: 0;
+  }
+
+  .contact__channels :global(.feature-card__desc) {
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  @media (min-width: 640px) {
+    .contact__channels {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+  }
+</style>

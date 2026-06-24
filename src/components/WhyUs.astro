@@ -1,0 +1,147 @@
+---
+import FeatureCard from "./ui/FeatureCard.astro";
+import PartnerMarquee from "./PartnerMarquee.astro";
+
+const points = [
+  {
+    title: "Built by exchange insiders",
+    desc: "Years inside tier-1 exchanges (Binance, Bybit, Bitget) on marketing and business development — we know how the money flows.",
+  },
+  {
+    title: "100% commission-based",
+    desc: "No fixed fees. No monthly retainers. If your revenue grows, ours grows. Zero cost to start.",
+  },
+  {
+    title: "Above-standard deals",
+    desc: "Pre-negotiated terms across multiple exchanges — rebates and structures above what most creators access alone.",
+  },
+  {
+    title: "A real network",
+    desc: "Active relationships with creators and exchange partners across LATAM, Spain, and Europe.",
+  },
+];
+---
+
+<section class="why" id="why-us" aria-labelledby="why-heading">
+  <div class="container" data-reveal="section">
+    <header class="section-header section-header--center">
+      <p class="eyebrow eyebrow--dim" data-reveal-item>Why Viraliza</p>
+      <h2 id="why-heading" class="section-title" data-reveal-item>
+        The desk that <span class="gradient-text">unlocks your economics</span>
+      </h2>
+      <span class="section-line" data-reveal-item></span>
+    </header>
+
+    <ul class="why__grid" role="list">
+      {points.map(({ title, desc }) => (
+        <FeatureCard title={title} desc={desc} />
+      ))}
+
+      <FeatureCard title="Proven scale" variant="accent">
+        <div class="why__stats">
+          <div class="why__stat">
+            <strong class="why__stat-value gradient-text">$5B+</strong>
+            <span class="why__stat-label">monthly volume</span>
+          </div>
+          <span class="why__stat-divider" aria-hidden="true">/</span>
+          <div class="why__stat">
+            <strong class="why__stat-value gradient-text">$1B+</strong>
+            <span class="why__stat-label">scaled</span>
+          </div>
+        </div>
+      </FeatureCard>
+    </ul>
+
+    <div class="why__partners">
+      <p class="why__partners-label" data-reveal-item>Exchange partners</p>
+      <PartnerMarquee />
+    </div>
+  </div>
+</section>
+
+<style>
+  .why {
+    padding-block: 7rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .why__grid {
+    display: grid;
+    gap: 1.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .why__stats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 1rem 1.25rem;
+  }
+
+  .why__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .why__stat-value {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .why__stat-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .why__stat-divider {
+    font-size: 1.5rem;
+    color: rgba(228, 198, 90, 0.3);
+    font-weight: 300;
+  }
+
+  .why__partners {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .why__partners-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .why__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .why__grid :global(.feature-card-wrap:last-child) {
+      grid-column: span 2;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .why__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .why__grid :global(.feature-card-wrap:last-child) {
+      grid-column: span 1;
+    }
+  }
+</style>

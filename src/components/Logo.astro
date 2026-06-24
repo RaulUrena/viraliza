@@ -1,0 +1,80 @@
+---
+interface Props {
+  variant?: "hero" | "nav";
+  class?: string;
+}
+
+const { variant = "hero", class: className = "" } = Astro.props;
+const classes = `logo logo--${variant} ${className}`.trim();
+---
+
+<div class={classes}>
+  <img
+    src="/logo-v.png"
+    alt={variant === "hero" ? "Viraliza" : ""}
+    width={variant === "hero" ? 320 : 48}
+    height={variant === "hero" ? 320 : 48}
+    class="logo__img"
+    decoding="async"
+  />
+</div>
+
+<style>
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    line-height: 0;
+  }
+
+  .logo__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    background: transparent;
+    mix-blend-mode: screen;
+  }
+
+  .logo--hero {
+    width: min(200px, 48vw);
+    margin-bottom: 0.25rem;
+    filter:
+      drop-shadow(0 0 40px rgba(139, 92, 246, 0.45))
+      drop-shadow(0 0 80px rgba(34, 211, 238, 0.2));
+  }
+
+  .logo--hero .logo__img {
+    animation: logo-float 4s ease-in-out infinite;
+  }
+
+  .logo--nav {
+    width: auto;
+    height: 2.5rem;
+    filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.35));
+  }
+
+  .logo--nav .logo__img {
+    height: 2.5rem;
+    width: auto;
+  }
+
+  @keyframes logo-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo--hero .logo__img {
+      animation: none;
+    }
+  }
+</style>

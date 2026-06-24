@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 36" role="img" aria-label="Bitunix">
+  <circle cx="18" cy="18" r="10" stroke="#7C6CFF" stroke-width="2" fill="none"/>
+  <path fill="#7C6CFF" d="M14 13h8v2.2h-3v7.6h-2V15.2H14V13z"/>
+  <path fill="#fff" d="M36 12h3.8l5.6 9.6L51 12h3.8v16h-3.6V17.4L44.2 28h-2.6L36 17.4V28h-3.6V12zm22 0h7.8c3.2 0 5.3 1.9 5.3 5s-2.1 5-5.3 5H44.8V28H41V12zm3.5 3.2v3.4h2.6c1 0 1.6-.5 1.6-1.5s-.6-1.5-1.6-1.5h-2.6z"/>
+</svg>

@@ -1,0 +1,91 @@
+---
+import FeatureCard from "./ui/FeatureCard.astro";
+
+const services = [
+  {
+    title: "Top-Tier Exchange Deals",
+    desc: "Pre-negotiated terms with Bitget, Binance, Bybit and more — rebates and fee structures most creators never access alone.",
+    accent: true,
+  },
+  {
+    title: "Volume Optimization Systems",
+    desc: "Incentives and frameworks engineered to compound trading activity across your community — more volume, more upside.",
+    accent: false,
+  },
+  {
+    title: "Signal Group Infrastructure",
+    desc: "The full stack to run signal and copy-trading groups that convert followers into depositing, active traders.",
+    accent: false,
+  },
+  {
+    title: "Community + Leader Activation",
+    desc: "Activate sub-leaders and collaborators to multiply reach, retention, and recurring exchange activity.",
+    accent: false,
+  },
+  {
+    title: "Branding & Content Strategy",
+    desc: "Positioning and content systems built to attract audiences that actually trade — not just scroll.",
+    accent: false,
+  },
+  {
+    title: "Design & Technical Support",
+    desc: "Creatives, landing pages, and integrations so you stay focused on growth while we handle the build.",
+    accent: false,
+  },
+];
+---
+
+<section class="services" id="services" aria-labelledby="services-heading">
+  <div class="container" data-reveal="section">
+    <header class="section-header section-header--center">
+      <p class="eyebrow eyebrow--dim" data-reveal-item>What we offer</p>
+      <h2 id="services-heading" class="section-title" data-reveal-item>
+        Everything to <span class="gradient-text">monetize your audience</span>
+      </h2>
+      <span class="section-line" data-reveal-item></span>
+      <p class="lede services__lede" data-reveal-item>
+        Not trading advice. Not fund management. The infrastructure and exchange economics to grow your commission revenue.
+      </p>
+    </header>
+
+    <ul class="services__grid" role="list">
+      {services.map(({ title, desc, accent }) => (
+        <FeatureCard title={title} desc={desc} variant={accent ? "accent" : "default"} />
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .services {
+    padding-block: 7rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .services__lede {
+    margin-top: 1.25rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .services__grid {
+    display: grid;
+    gap: 1.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  @media (min-width: 640px) {
+    .services__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

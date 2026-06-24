@@ -1,0 +1,71 @@
+---
+import Icon from "./Icon.astro";
+import type { IconName } from "../../icons/registry";
+
+interface Props {
+  name: IconName;
+  size?: number;
+  variant?: "default" | "stat";
+}
+
+const { name, size = 20, variant = "default" } = Astro.props;
+---
+
+<div class:list={["icon-box", variant === "stat" && "icon-box--stat"]}>
+  <div class="icon-box__inner">
+    <Icon name={name} size={size} />
+  </div>
+</div>
+
+<style>
+  .icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: linear-gradient(145deg, rgba(139, 92, 246, 0.14), rgba(34, 211, 238, 0.06));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  }
+
+  .icon-box__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.375rem;
+    height: 1.375rem;
+  }
+
+  .icon-box--stat {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: rgba(20, 20, 28, 0.9);
+  }
+
+  .icon-box--stat .icon-box__inner {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  :global(.feature-card:hover) .icon-box,
+  :global(.contact__channel:hover) .icon-box {
+    border-color: rgba(139, 92, 246, 0.45);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 0 24px rgba(139, 92, 246, 0.15);
+    transform: translateY(-1px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.feature-card:hover) .icon-box {
+      transform: none;
+    }
+  }
+</style>

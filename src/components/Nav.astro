@@ -1,0 +1,197 @@
+---
+import Logo from "./Logo.astro";
+
+const links = [
+  { label: "What we offer", href: "#services" },
+  { label: "Why us", href: "#why-us" },
+  { label: "How it works", href: "#how-it-works" },
+];
+---
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a href="#" class="nav__logo" aria-label="Viraliza home">
+      <Logo variant="nav" />
+    </a>
+
+    <nav class="nav__links" aria-label="Main navigation">
+      {links.map(({ label, href }) => (
+        <a href={href} class="nav__link">{label}</a>
+      ))}
+      <a href="#contact" class="nav__cta btn btn--primary">Unlock your deal</a>
+    </nav>
+
+    <button
+      class="nav__toggle"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      id="menu-toggle"
+    >
+      <span class="nav__toggle-bar"></span>
+      <span class="nav__toggle-bar"></span>
+    </button>
+  </div>
+
+  <div class="nav__mobile" id="mobile-menu" hidden>
+    <nav class="container nav__mobile-inner" aria-label="Mobile navigation">
+      {links.map(({ label, href }) => (
+        <a href={href} class="nav__mobile-link">{label}</a>
+      ))}
+      <a href="#contact" class="nav__mobile-cta btn btn--primary">Unlock your deal</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  toggle?.addEventListener("click", () => {
+    const open = menu?.hasAttribute("hidden");
+    if (open) {
+      menu?.removeAttribute("hidden");
+      toggle.setAttribute("aria-expanded", "true");
+      toggle.setAttribute("aria-label", "Close menu");
+    } else {
+      menu?.setAttribute("hidden", "");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Open menu");
+    }
+  });
+
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.setAttribute("hidden", "");
+      toggle?.setAttribute("aria-expanded", "false");
+      toggle?.setAttribute("aria-label", "Open menu");
+    });
+  });
+</script>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(5, 5, 8, 0.35);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid transparent;
+    transition: background 0.35s, border-color 0.35s, padding 0.35s;
+  }
+
+  :global(.nav--scrolled) {
+    background: rgba(5, 5, 8, 0.92);
+    border-bottom-color: var(--border);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4.5rem;
+    transition: height 0.35s;
+  }
+
+  :global(.nav--scrolled) .nav__inner {
+    height: 3.75rem;
+  }
+
+  .nav__logo {
+    display: flex;
+    align-items: center;
+    transition: opacity 0.2s;
+  }
+
+  .nav__logo:hover {
+    opacity: 0.85;
+  }
+
+  .nav__links {
+    display: none;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav__link {
+    font-size: 0.9375rem;
+    color: var(--text-dim);
+    transition: color 0.2s;
+  }
+
+  .nav__link:hover {
+    color: var(--text);
+  }
+
+  .nav__cta {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+  }
+
+  .nav__toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.5rem;
+  }
+
+  .nav__toggle-bar {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text);
+    border-radius: 1px;
+    transition: transform 0.2s;
+  }
+
+  .nav__mobile {
+    border-bottom: 1px solid var(--border);
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(16px);
+  }
+
+  .nav__mobile-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-block: 1rem 1.5rem;
+  }
+
+  .nav__mobile-link {
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav__mobile-link:hover {
+    color: var(--text);
+  }
+
+  .nav__mobile-cta {
+    margin-top: 0.75rem;
+    align-self: flex-start;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9375rem;
+    box-shadow: none;
+  }
+
+  @media (min-width: 768px) {
+    .nav__links {
+      display: flex;
+    }
+
+    .nav__toggle {
+      display: none;
+    }
+
+    .nav__mobile {
+      display: none !important;
+    }
+  }
+</style>

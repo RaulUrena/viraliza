@@ -1,0 +1,85 @@
+---
+const items = [
+  {
+    title: "Higher rebates per trade",
+    desc: "Pre-negotiated exchange terms — often above what you'd get on your own.",
+  },
+  {
+    title: "Your volume, our stack",
+    desc: "Signal groups, copy-trading, and bots that turn followers into active traders.",
+  },
+  {
+    title: "We win when you win",
+    desc: "100% commission-based. No fixed fees. Zero risk to start.",
+  },
+];
+---
+
+<section class="value-strip" aria-label="Value proposition">
+  <div class="container">
+    <ul class="value-strip__grid" role="list" data-reveal="section">
+      {items.map(({ title, desc }) => (
+        <li class="value-strip__item" data-reveal-item>
+          <span class="value-strip__marker" aria-hidden="true"></span>
+          <h2 class="value-strip__title">{title}</h2>
+          <p class="value-strip__desc">{desc}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .value-strip {
+    padding-block: 0 4rem;
+    margin-top: -1rem;
+  }
+
+  .value-strip__grid {
+    display: grid;
+    gap: 1px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: rgba(228, 198, 90, 0.12);
+    border: 1px solid rgba(228, 198, 90, 0.12);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .value-strip__item {
+    padding: 2rem 1.75rem;
+    background: rgba(6, 6, 10, 0.75);
+    backdrop-filter: blur(20px);
+  }
+
+  .value-strip__marker {
+    display: block;
+    width: 2rem;
+    height: 2px;
+    margin-bottom: 1rem;
+    background: var(--gradient-wealth);
+  }
+
+  .value-strip__title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+
+  .value-strip__desc {
+    font-size: 0.9375rem;
+    color: var(--text-dim);
+    line-height: 1.65;
+    max-width: 28rem;
+  }
+
+  @media (min-width: 768px) {
+    .value-strip__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

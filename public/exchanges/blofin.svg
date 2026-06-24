@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 36" role="img" aria-label="Blofin">
+  <path fill="#3B82F6" d="M10 10h5.4l5.2 8.8V10h3.6v16h-5.4l-5.2-8.8V26H10V10z"/>
+  <path fill="#fff" d="M32 12h3.6l4.8 8 4.8-8h3.6l-6.6 12v2h-3.6v-2L32 12zm22 0h7.8c3.2 0 5.3 1.9 5.3 5s-2.1 5-5.3 5H57.2V26H54V12zm3.5 3.2v3.4h2.6c1 0 1.6-.5 1.6-1.5s-.6-1.5-1.6-1.5h-2.6z"/>
+  <circle cx="78" cy="18" r="2.5" fill="#3B82F6"/>
+</svg>

@@ -1,0 +1,67 @@
+---
+import FeatureCard from "./ui/FeatureCard.astro";
+
+const steps = [
+  {
+    title: "Get in touch",
+    desc: "Tell us about your community, current volume, and revenue goals.",
+  },
+  {
+    title: "We match you",
+    desc: "We analyze your audience and find the exchange and deal that maximizes your economics. Larger exchanges convert easier; smaller ones offer more aggressive terms.",
+  },
+  {
+    title: "You're set up",
+    desc: "Register through our link. Our team supports you end-to-end while your commission revenue scales.",
+  },
+];
+---
+
+<section class="how" id="how-it-works" aria-labelledby="how-heading">
+  <div class="container" data-reveal="section">
+    <header class="section-header section-header--center">
+      <p class="eyebrow eyebrow--dim" data-reveal-item>How it works</p>
+      <h2 id="how-heading" class="section-title" data-reveal-item>
+        Start earning in <span class="gradient-text">three steps</span>
+      </h2>
+      <span class="section-line" data-reveal-item></span>
+    </header>
+
+    <ol class="how__steps" role="list">
+      {steps.map(({ title, desc }) => (
+        <FeatureCard title={title} desc={desc} />
+      ))}
+    </ol>
+
+    <div class="how__cta-wrap" data-reveal-item>
+      <a href="#contact" class="btn btn--primary">Unlock your deal</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .how {
+    padding-block: 7rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .how__steps {
+    display: grid;
+    gap: 1.25rem;
+    list-style: none;
+    max-width: 52rem;
+    margin-inline: auto;
+    padding: 0;
+  }
+
+  .how__cta-wrap {
+    margin-top: 3.5rem;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .how__steps {
+      gap: 1.5rem;
+    }
+  }
+</style>

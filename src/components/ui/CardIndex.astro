@@ -1,0 +1,19 @@
+---
+interface Props {
+  index: string;
+}
+
+const { index } = Astro.props;
+---
+
+<span class="card-index" aria-hidden="true">{index}</span>
+
+<style>
+  .card-index {
+    font-family: var(--font-display);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+  }
+</style>
