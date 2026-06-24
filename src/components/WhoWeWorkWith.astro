@@ -1,0 +1,94 @@
+---
+import FeatureCard from "./ui/FeatureCard.astro";
+
+const segments = [
+  {
+    title: "Creators & influencers",
+    desc: "Turn your audience's trading into recurring revenue, on better terms.",
+  },
+  {
+    title: "Trading communities",
+    desc: "Better exchange terms for your members — Discord, Telegram, signal groups.",
+  },
+  {
+    title: "Bot operators & algo traders",
+    desc: "Higher rebates and lower fees make your strategies more profitable. The volume's already there — we improve the economics.",
+  },
+  {
+    title: "Copy-traders & lead traders",
+    desc: "Earn more on the volume your followers already mirror.",
+  },
+];
+---
+
+<section class="who" id="who-we-work-with" aria-labelledby="who-heading">
+  <div class="container" data-reveal="section">
+    <header class="section-header section-header--center">
+      <p class="eyebrow eyebrow--dim" data-reveal-item>Volume sources</p>
+      <h2 id="who-heading" class="section-title" data-reveal-item>
+        Who we <span class="gradient-text">work with</span>
+      </h2>
+      <span class="section-line" data-reveal-item></span>
+    </header>
+
+    <ul class="who__grid" role="list">
+      {segments.map(({ title, desc }) => (
+        <FeatureCard title={title} desc={desc} />
+      ))}
+    </ul>
+
+    <p class="who__closing" data-reveal-item>
+      If it moves real exchange volume, we can improve what it earns.
+    </p>
+  </div>
+</section>
+
+<style>
+  .who {
+    padding-block: 4rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .who__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .who__closing {
+    margin-top: 2.5rem;
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.5;
+    text-align: center;
+    color: rgba(244, 244, 250, 0.82);
+    max-width: 32rem;
+    margin-inline: auto;
+  }
+
+  @media (min-width: 640px) {
+    .who {
+      padding-block: 5rem;
+    }
+
+    .who__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .who {
+      padding-block: 6rem;
+    }
+
+    .who__grid {
+      gap: 1.5rem;
+    }
+  }
+</style>
