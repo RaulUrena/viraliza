@@ -9,17 +9,17 @@ const services = [
   },
   {
     title: "Volume Optimization Systems",
-    desc: "Incentives and frameworks engineered to compound trading activity across your community — more volume, more upside.",
+    desc: "Incentives and frameworks that help your community trade more consistently — shared upside as volume grows.",
     accent: false,
   },
   {
     title: "Signal Group Infrastructure",
-    desc: "The full stack to run signal and copy-trading groups that convert followers into depositing, active traders.",
+    desc: "The full stack to run signal and copy-trading groups that help your audience become active traders.",
     accent: false,
   },
   {
     title: "Community + Leader Activation",
-    desc: "Activate sub-leaders and collaborators to multiply reach, retention, and recurring exchange activity.",
+    desc: "Activate sub-leaders and collaborators to grow reach, retention, and recurring exchange activity together.",
     accent: false,
   },
   {
@@ -29,7 +29,7 @@ const services = [
   },
   {
     title: "Design & Technical Support",
-    desc: "Creatives, landing pages, and integrations so you stay focused on growth while we handle the build.",
+    desc: "Creatives, landing pages, and integrations so you stay focused on your community while we handle the build.",
     accent: false,
   },
 ];
@@ -40,11 +40,11 @@ const services = [
     <header class="section-header section-header--center">
       <p class="eyebrow eyebrow--dim" data-reveal-item>What we offer</p>
       <h2 id="services-heading" class="section-title" data-reveal-item>
-        Everything to <span class="gradient-text">monetize your audience</span>
+        Better exchange terms — <span class="gradient-text">and earnings on the volume they already trade</span>
       </h2>
       <span class="section-line" data-reveal-item></span>
       <p class="lede services__lede" data-reveal-item>
-        Not trading advice. Not fund management. The infrastructure and exchange economics to grow your commission revenue.
+        Not trading advice. Not fund management. The infrastructure and exchange economics to grow your commission revenue — aligned with your community.
       </p>
     </header>
 
@@ -58,7 +58,7 @@ const services = [
 
 <style>
   .services {
-    padding-block: 7rem;
+    padding-block: 4rem;
     border-top: 1px solid var(--border);
   }
 
@@ -70,22 +70,32 @@ const services = [
 
   .services__grid {
     display: grid;
-    gap: 1.25rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
   @media (min-width: 640px) {
+    .services {
+      padding-block: 5rem;
+    }
+
     .services__grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
   }
 
   @media (min-width: 1024px) {
+    .services {
+      padding-block: 7rem;
+    }
+
     .services__grid {
       grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
     }
   }
 </style>

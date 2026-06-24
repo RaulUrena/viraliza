@@ -28,7 +28,7 @@ const track = [...exchanges, ...exchanges];
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 4rem;
+    width: clamp(2rem, 8vw, 4rem);
     z-index: 1;
     pointer-events: none;
   }
@@ -46,7 +46,7 @@ const track = [...exchanges, ...exchanges];
   .marquee__track {
     display: flex;
     width: max-content;
-    gap: 3rem;
+    gap: clamp(1.5rem, 5vw, 3rem);
     animation: marquee 32s linear infinite;
   }
 

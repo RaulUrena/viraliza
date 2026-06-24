@@ -109,6 +109,12 @@ const links = [
     opacity: 0.85;
   }
 
+  .nav__logo:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
   .nav__links {
     display: none;
     align-items: center;
@@ -119,6 +125,12 @@ const links = [
     font-size: 0.9375rem;
     color: var(--text-dim);
     transition: color 0.2s;
+    border-radius: 4px;
+  }
+
+  .nav__link:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
   }
 
   .nav__link:hover {
@@ -134,10 +146,17 @@ const links = [
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 6px;
-    width: 2.5rem;
-    height: 2.5rem;
-    padding: 0.5rem;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  .nav__toggle:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
   }
 
   .nav__toggle-bar {
@@ -163,10 +182,19 @@ const links = [
   }
 
   .nav__mobile-link {
-    padding: 0.75rem 0;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.625rem 0;
     font-size: 1rem;
     color: var(--text-dim);
     border-bottom: 1px solid var(--border);
+    border-radius: 4px;
+  }
+
+  .nav__mobile-link:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
   }
 
   .nav__mobile-link:hover {

@@ -1,7 +1,7 @@
 ---
 const stats = [
   { value: "$5B+", label: "Monthly volume moved", highlight: true },
-  { value: "$1B+", label: "Revenue scaled", highlight: true },
+  { value: "$1B+", label: "In volume scaled", highlight: true },
   { value: "$0", label: "Upfront cost to start", highlight: false },
 ];
 ---
@@ -23,7 +23,7 @@ const stats = [
     width: 100%;
     max-width: 52rem;
     margin-top: 1rem;
-    padding: 2rem 2rem 1.75rem;
+    padding: 1.5rem 1.25rem 1.25rem;
     background:
       linear-gradient(165deg, rgba(228, 198, 90, 0.06) 0%, transparent 45%),
       rgba(6, 6, 10, 0.55);
@@ -42,13 +42,13 @@ const stats = [
     text-transform: uppercase;
     color: var(--gold);
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
 
   .stats-bar__list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 1rem;
     list-style: none;
   }
 
@@ -66,7 +66,7 @@ const stats = [
 
   .stats-bar__value {
     font-family: var(--font-display);
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     font-weight: 600;
     letter-spacing: -0.04em;
     line-height: 1;
@@ -81,7 +81,7 @@ const stats = [
   }
 
   .stats-bar__label {
-    font-size: 0.6875rem;
+    font-size: 0.625rem;
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -90,15 +90,19 @@ const stats = [
   }
 
   @media (max-width: 600px) {
+    .stats-bar {
+      padding: 1.25rem 1rem;
+    }
+
     .stats-bar__list {
       grid-template-columns: 1fr;
-      gap: 1.25rem;
+      gap: 1rem;
     }
 
     .stats-bar__item:not(:last-child) {
       border-right: none;
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      padding-bottom: 1.25rem;
+      padding-bottom: 1rem;
     }
   }
 </style>

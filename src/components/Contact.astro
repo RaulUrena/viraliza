@@ -28,11 +28,11 @@ const channels = [
     <header class="section-header section-header--center">
       <p class="eyebrow" data-reveal-item>Start now</p>
       <h2 id="contact-heading" class="section-title" data-reveal-item>
-        Ready to <span class="gradient-text">grow your revenue?</span>
+        Ready to <span class="gradient-text">grow together?</span>
       </h2>
       <span class="section-line" data-reveal-item></span>
       <p class="lede lede--bright contact__copy" data-reveal-item>
-        Tell us about your community. We'll review your setup, match you to the right exchange deal, and get you earning — no upfront cost.
+        Tell us about your community. We'll review your setup, match you to the right exchange deal, and help you start earning — no upfront cost.
       </p>
     </header>
 
@@ -51,7 +51,7 @@ const channels = [
 
 <style>
   .contact {
-    padding-block: 7rem 8rem;
+    padding-block: 4rem 5rem;
     border-top: 1px solid var(--border);
   }
 
@@ -82,6 +82,12 @@ const channels = [
     .contact__channels {
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .contact {
+      padding-block: 7rem 8rem;
     }
   }
 </style>

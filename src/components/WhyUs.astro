@@ -5,7 +5,7 @@ import PartnerMarquee from "./PartnerMarquee.astro";
 const points = [
   {
     title: "Built by exchange insiders",
-    desc: "Years inside tier-1 exchanges (Binance, Bybit, Bitget) on marketing and business development — we know how the money flows.",
+    desc: "Years inside tier-1 exchanges (Binance, Bybit, Bitget) on marketing and business development — we know exchange economics from the inside.",
   },
   {
     title: "100% commission-based",
@@ -41,12 +41,12 @@ const points = [
         <div class="why__stats">
           <div class="why__stat">
             <strong class="why__stat-value gradient-text">$5B+</strong>
-            <span class="why__stat-label">monthly volume</span>
+            <span class="why__stat-label">Monthly volume moved</span>
           </div>
           <span class="why__stat-divider" aria-hidden="true">/</span>
           <div class="why__stat">
             <strong class="why__stat-value gradient-text">$1B+</strong>
-            <span class="why__stat-label">scaled</span>
+            <span class="why__stat-label">In volume scaled</span>
           </div>
         </div>
       </FeatureCard>
@@ -61,13 +61,14 @@ const points = [
 
 <style>
   .why {
-    padding-block: 7rem;
+    padding-block: 4rem;
     border-top: 1px solid var(--border);
   }
 
   .why__grid {
     display: grid;
-    gap: 1.25rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -88,18 +89,19 @@ const points = [
 
   .why__stat-value {
     font-family: var(--font-display);
-    font-size: 2.25rem;
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
     font-weight: 600;
     letter-spacing: -0.04em;
     line-height: 1;
   }
 
   .why__stat-label {
-    font-size: 0.6875rem;
+    font-size: 0.625rem;
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--text-dim);
+    line-height: 1.4;
   }
 
   .why__stat-divider {
@@ -109,9 +111,10 @@ const points = [
   }
 
   .why__partners {
-    margin-top: 4rem;
-    padding-top: 3rem;
+    margin-top: 3rem;
+    padding-top: 2.5rem;
     border-top: 1px solid var(--border);
+    overflow: hidden;
   }
 
   .why__partners-label {
@@ -125,19 +128,33 @@ const points = [
   }
 
   @media (min-width: 640px) {
+    .why {
+      padding-block: 5rem;
+    }
+
     .why__grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
 
     .why__grid :global(.feature-card-wrap:last-child) {
       grid-column: span 2;
     }
+
+    .why__partners {
+      margin-top: 4rem;
+      padding-top: 3rem;
+    }
   }
 
   @media (min-width: 1024px) {
+    .why {
+      padding-block: 7rem;
+    }
+
     .why__grid {
       grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
     }
 
     .why__grid :global(.feature-card-wrap:last-child) {

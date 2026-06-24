@@ -16,7 +16,7 @@ const steps = [
       </h2>
       <span class="section-line" data-reveal-item></span>
       <p class="lede funnel__intro" data-reveal-item>
-        We don't just collect commissions. We engineer the full journey — from first click to recurring volume — across deals, content, and community strategy.
+        We don't just collect commissions. We help engineer the full journey — from first click to recurring volume — across deals, content, and community strategy.
       </p>
     </header>
 
@@ -32,7 +32,7 @@ const steps = [
 
 <style>
   .funnel {
-    padding-block: 7rem;
+    padding-block: 4rem;
     border-top: 1px solid var(--border);
   }
 
@@ -89,6 +89,12 @@ const steps = [
     .funnel__steps {
       grid-template-columns: repeat(2, 1fr);
       gap: 1.25rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .funnel {
+      padding-block: 7rem;
     }
   }
 </style>

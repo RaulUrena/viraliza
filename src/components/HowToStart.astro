@@ -8,7 +8,7 @@ const steps = [
   },
   {
     title: "We match you",
-    desc: "We analyze your audience and find the exchange and deal that maximizes your economics. Larger exchanges convert easier; smaller ones offer more aggressive terms.",
+    desc: "We analyze your audience and match you to the exchange and deal that fits your community best. Larger exchanges convert easier; smaller ones often offer more aggressive terms.",
   },
   {
     title: "You're set up",
@@ -41,7 +41,7 @@ const steps = [
 
 <style>
   .how {
-    padding-block: 7rem;
+    padding-block: 4rem;
     border-top: 1px solid var(--border);
   }
 
@@ -62,6 +62,12 @@ const steps = [
   @media (min-width: 768px) {
     .how__steps {
       gap: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .how {
+      padding-block: 7rem;
     }
   }
 </style>
