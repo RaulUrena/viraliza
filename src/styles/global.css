@@ -70,6 +70,10 @@ button {
   padding-inline: 1.25rem;
 }
 
+main section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
 @media (min-width: 768px) {
   .container {
     padding-inline: 2rem;

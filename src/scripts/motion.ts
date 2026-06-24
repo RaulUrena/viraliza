@@ -7,8 +7,35 @@ function shouldAnimate(): boolean {
   return !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
+function isMobile(): boolean {
+  return window.matchMedia("(max-width: 767px)").matches;
+}
+
+function initAnchorScroll(): void {
+  const nav = document.querySelector<HTMLElement>(".nav");
+
+  document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const id = anchor.getAttribute("href");
+      if (!id || id === "#") return;
+      const target = document.querySelector(id);
+      if (!target) return;
+
+      if (!isMobile()) return;
+
+      e.preventDefault();
+      const navHeight = nav?.offsetHeight ?? 72;
+      const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
+
+      window.scrollTo({
+        top: Math.max(0, top),
+        behavior: shouldAnimate() ? "smooth" : "auto",
+      });
+    });
+  });
+}
 function initInteractiveCards(): void {
-  if (!window.matchMedia("(min-width: 768px)").matches) return;
+  if (isMobile()) return;
 
   gsap.utils.toArray<HTMLElement>("[data-interactive-card]").forEach((card) => {
     const onMove = (e: MouseEvent) => {
@@ -49,6 +76,8 @@ function initInteractiveCards(): void {
 }
 
 export function initMotion(): void {
+  initAnchorScroll();
+
   if (!shouldAnimate()) return;
 
   gsap.registerPlugin(ScrollTrigger);
@@ -124,20 +153,22 @@ export function initMotion(): void {
 
     const cards = section.querySelectorAll<HTMLElement>("[data-reveal-card]");
     if (cards.length) {
+      const mobile = isMobile();
       gsap.fromTo(
         cards,
-        { opacity: 0, y: 48, rotateX: 10, scale: 0.96 },
+        mobile
+          ? { opacity: 0, y: 20 }
+          : { opacity: 0, y: 48, rotateX: 10, scale: 0.96 },
         {
           opacity: 1,
           y: 0,
-          rotateX: 0,
-          scale: 1,
-          duration: 0.75,
-          stagger: 0.09,
+          ...(mobile ? {} : { rotateX: 0, scale: 1 }),
+          duration: mobile ? 0.55 : 0.75,
+          stagger: mobile ? 0.06 : 0.09,
           ease: "power3.out",
           scrollTrigger: {
             trigger: section,
-            start: "top 72%",
+            start: mobile ? "top 88%" : "top 72%",
             toggleActions: "play none none none",
           },
         },
@@ -168,7 +199,7 @@ export function initMotion(): void {
   initInteractiveCards();
 
   // Smooth scroll — desktop only
-  if (window.matchMedia("(min-width: 768px)").matches) {
+  if (!isMobile()) {
     const lenis = new Lenis({ duration: 1.15, smoothWheel: true });
 
     lenis.on("scroll", ScrollTrigger.update);
