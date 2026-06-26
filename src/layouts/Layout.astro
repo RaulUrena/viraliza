@@ -4,11 +4,15 @@ import SiteBackground from "../components/SiteBackground.astro";
 interface Props {
   title?: string;
   description?: string;
+  canonical?: string;
 }
+
+const siteUrl = "https://viraliza.io";
 
 const {
   title = "Viraliza — Crypto Growth Desk",
   description = "Turn your audience into exchange revenue. Pre-negotiated deals for creators, communities, and trading operations that move real volume. Zero upfront cost.",
+  canonical = siteUrl,
 } = Astro.props;
 ---
 
@@ -17,7 +21,9 @@ const {
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/logo.png" />
-    <meta property="og:image" content="/logo.png" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${siteUrl}/logo.png`} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

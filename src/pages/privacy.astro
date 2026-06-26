@@ -1,0 +1,181 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="Privacy — Viraliza"
+  description="How Viraliza handles information when you visit our website or contact us."
+  canonical="https://viraliza.io/privacy"
+>
+  <Nav />
+  <main>
+    <article class="legal">
+      <div class="container legal__inner">
+        <p class="eyebrow">Legal</p>
+        <h1 class="legal__title">Privacy policy</h1>
+        <p class="legal__updated">Last updated: June 2026</p>
+
+        <div class="legal__body">
+          <section>
+            <h2>Overview</h2>
+            <p>
+              Viraliza operates a marketing website at viraliza.io. We do not offer trading,
+              fund management, or investment advice through this site. This policy explains what
+              information we may collect and how we use it.
+            </p>
+          </section>
+
+          <section>
+            <h2>Information we collect</h2>
+            <p>
+              This website is static. We do not use contact forms or account registration on the
+              site itself. If you email us, message us on Telegram, or contact us on X, we receive
+              only the information you choose to send.
+            </p>
+            <p>
+              Like most websites, our hosting provider (Cloudflare) may process technical data such
+              as IP address, browser type, and request logs for security and performance. We do not
+              control Cloudflare's processing; see
+              <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare's privacy policy</a>.
+            </p>
+          </section>
+
+          <section>
+            <h2>Fonts</h2>
+            <p>
+              We load typography from Google Fonts. When you visit the site, your browser may
+              request font files from Google. See
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's privacy policy</a>.
+            </p>
+          </section>
+
+          <section>
+            <h2>Cookies</h2>
+            <p>
+              We do not set marketing or analytics cookies on this site. Cloudflare or your browser
+              may use strictly necessary cookies or local storage for security and delivery.
+            </p>
+          </section>
+
+          <section>
+            <h2>How we use information</h2>
+            <p>
+              We use contact information only to respond to partnership inquiries, evaluate fit,
+              and communicate about exchange partner programs. We do not sell personal data.
+            </p>
+          </section>
+
+          <section>
+            <h2>Retention</h2>
+            <p>
+              We keep correspondence only as long as needed for business and legal purposes, then
+              delete or anonymize it where appropriate.
+            </p>
+          </section>
+
+          <section>
+            <h2>Your rights</h2>
+            <p>
+              Depending on your location, you may have rights to access, correct, or delete personal
+              data we hold. Contact us at
+              <a href="mailto:partnerships@viraliza.io">partnerships@viraliza.io</a>.
+            </p>
+          </section>
+
+          <section>
+            <h2>Changes</h2>
+            <p>
+              We may update this policy from time to time. The date at the top reflects the latest
+              revision.
+            </p>
+          </section>
+
+          <section>
+            <h2>Contact</h2>
+            <p>
+              Questions about privacy:
+              <a href="mailto:partnerships@viraliza.io">partnerships@viraliza.io</a>
+            </p>
+          </section>
+        </div>
+
+        <a href="/" class="btn btn--secondary legal__back">Back to home</a>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .legal {
+    padding-block: 6rem 4rem;
+    min-height: 60svh;
+  }
+
+  .legal__inner {
+    max-width: 42rem;
+  }
+
+  .legal__title {
+    margin-top: 0.75rem;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+  }
+
+  .legal__updated {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--text-dim);
+  }
+
+  .legal__body {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .legal__body h2 {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.625rem;
+    color: var(--text);
+  }
+
+  .legal__body p {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: var(--text-dim);
+  }
+
+  .legal__body p + p {
+    margin-top: 0.75rem;
+  }
+
+  .legal__body a {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .legal__body a:hover {
+    color: var(--cyan);
+  }
+
+  .legal__back {
+    margin-top: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .legal {
+      padding-block: 7rem 5rem;
+    }
+  }
+</style>
