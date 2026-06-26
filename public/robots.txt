@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://viraliza.io/sitemap.xml
+Sitemap: https://viraliza.pages.dev/sitemap.xml
