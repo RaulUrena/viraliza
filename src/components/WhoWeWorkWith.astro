@@ -3,16 +3,16 @@ import FeatureCard from "./ui/FeatureCard.astro";
 
 const segments = [
   {
-    title: "Creators & influencers",
-    desc: "Turn your audience's trading into recurring revenue, on better terms.",
+    title: "Creators & finance influencers",
+    desc: "Audiences curious about trading and crypto, ready to act on better terms.",
   },
   {
     title: "Trading communities",
-    desc: "Better exchange terms for your members — Discord, Telegram, signal groups.",
+    desc: "Better exchange terms for members who already trade — Discord, Telegram, signal groups.",
   },
   {
     title: "Bot operators & algo traders",
-    desc: "Higher rebates and lower fees make your strategies more profitable. The volume's already there — we improve the economics.",
+    desc: "Higher rebates and lower fees improve the economics of your strategies. The volume is already there.",
   },
   {
     title: "Copy-traders & lead traders",
@@ -29,6 +29,9 @@ const segments = [
         Who we <span class="gradient-text">work with</span>
       </h2>
       <span class="section-line" data-reveal-item></span>
+      <p class="lede who__lede" data-reveal-item>
+        Finance, investing, business, and tech creators whose audiences have genuine trading interest — not passive scrollers.
+      </p>
     </header>
 
     <ul class="who__grid" role="list">
@@ -49,6 +52,13 @@ const segments = [
     border-top: 1px solid var(--border);
   }
 
+  .who__lede {
+    margin-top: 1.25rem;
+    margin-inline: auto;
+    text-align: center;
+    max-width: 36rem;
+  }
+
   .who__grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -61,7 +71,7 @@ const segments = [
   .who__closing {
     margin-top: 2.5rem;
     font-family: var(--font-display);
-    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    font-size: clamp(1rem, 2.5vw, 1.0625rem);
     font-weight: 500;
     letter-spacing: -0.02em;
     line-height: 1.5;

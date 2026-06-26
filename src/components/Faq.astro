@@ -1,0 +1,145 @@
+---
+const items = [
+  {
+    question: "How do you make money?",
+    answer:
+      "Exchanges pay us a share through their official partner programs. You get better terms; we earn on the volume you generate. You never pay us directly.",
+  },
+  {
+    question: "Is there any upfront cost?",
+    answer:
+      "No. We're 100% commission-based. If you don't grow, we don't earn. Zero risk to start.",
+  },
+  {
+    question: "Do you manage funds or give trading advice?",
+    answer:
+      "Never. We don't touch your funds and we don't provide trading or investment advice. We structure the exchange side — deals, rebates, and infrastructure. Real volume only.",
+  },
+  {
+    question: "Who is this for?",
+    answer:
+      "Creators, communities, and trading operations with engaged audiences — anyone who generates real exchange volume.",
+  },
+  {
+    question: "How do we start?",
+    answer:
+      "Get in touch. We review your setup and match you to the right exchange and deal — no upfront cost.",
+  },
+];
+---
+
+<section class="faq" id="faq" aria-labelledby="faq-heading">
+  <div class="container" data-reveal="section">
+    <header class="section-header section-header--center">
+      <p class="eyebrow eyebrow--dim" data-reveal-item>Transparency</p>
+      <h2 id="faq-heading" class="section-title" data-reveal-item>
+        How it works / <span class="gradient-text">FAQ</span>
+      </h2>
+      <span class="section-line" data-reveal-item></span>
+    </header>
+
+    <div class="faq__list" data-reveal-item>
+      {items.map(({ question, answer }) => (
+        <details class="faq__item">
+          <summary class="faq__question">{question}</summary>
+          <p class="faq__answer">{answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    padding-block: 4rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 44rem;
+    margin-inline: auto;
+  }
+
+  .faq__item {
+    background: rgba(8, 8, 12, 0.55);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .faq__question {
+    padding: 1.125rem 1.25rem;
+    font-family: var(--font-display);
+    font-size: clamp(0.9375rem, 2.5vw, 1.0625rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+    color: var(--text);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .faq__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__question::after {
+    content: "+";
+    flex-shrink: 0;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-dim);
+    line-height: 1;
+    transition: transform 0.25s, color 0.25s;
+  }
+
+  .faq__item[open] .faq__question::after {
+    content: "−";
+    color: var(--gold);
+  }
+
+  .faq__question:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: -2px;
+  }
+
+  .faq__answer {
+    padding: 0 1.25rem 1.25rem;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--text-dim);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1rem;
+    margin-top: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .faq {
+      padding-block: 6rem;
+    }
+
+    .faq__question {
+      padding: 1.25rem 1.5rem;
+    }
+
+    .faq__answer {
+      padding: 0 1.5rem 1.5rem;
+      padding-top: 1rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq__question::after {
+      transition: none;
+    }
+  }
+</style>
