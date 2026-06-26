@@ -8,46 +8,11 @@ const track = [...exchanges, ...exchanges];
   <div class="marquee__fade marquee__fade--left" aria-hidden="true"></div>
   <div class="marquee__fade marquee__fade--right" aria-hidden="true"></div>
   <div class="marquee__track">
-    {track.map(({ name, slug, logo, accent }) => (
-      <span class="marquee__item" style={`--accent: ${accent}`}>
-        <span class="marquee__logo-slot">
-          <img
-            class="marquee__logo"
-            src={logo}
-            alt={name}
-            width="120"
-            height="36"
-            loading="lazy"
-            decoding="async"
-            data-fallback={slug}
-          />
-          <span class="marquee__fallback" hidden>{name}</span>
-        </span>
-      </span>
+    {track.map(({ name, accent }) => (
+      <span class="marquee__item" style={`--accent: ${accent}`}>{name}</span>
     ))}
   </div>
 </div>
-
-<script>
-  document.querySelectorAll<HTMLImageElement>(".marquee__logo").forEach((img) => {
-    const slot = img.closest(".marquee__logo-slot");
-    const fallback = slot?.querySelector<HTMLElement>(".marquee__fallback");
-
-    img.addEventListener("error", () => {
-      img.hidden = true;
-      if (fallback) fallback.hidden = false;
-    });
-
-    if (!img.complete || img.naturalWidth === 0) {
-      img.addEventListener("load", () => {
-        if (img.naturalWidth === 0 && fallback) {
-          img.hidden = true;
-          fallback.hidden = false;
-        }
-      });
-    }
-  });
-</script>
 
 <style>
   .marquee {
@@ -87,47 +52,16 @@ const track = [...exchanges, ...exchanges];
 
   .marquee__item {
     flex-shrink: 0;
-    display: flex;
-    align-items: center;
-  }
-
-  .marquee__logo-slot {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 6.5rem;
-    height: 2.5rem;
-    padding-inline: 0.75rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px dashed rgba(255, 255, 255, 0.12);
-    border-radius: 8px;
-  }
-
-  .marquee__logo {
-    max-width: 6rem;
-    max-height: 1.75rem;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    opacity: 0.88;
-    filter: grayscale(0.15);
-  }
-
-  .marquee__fallback {
     font-family: var(--font-display);
-    font-size: 0.8125rem;
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
     font-weight: 600;
-    letter-spacing: -0.02em;
-    color: rgba(232, 232, 240, 0.45);
+    letter-spacing: -0.03em;
+    color: rgba(232, 232, 240, 0.35);
+    transition: color 0.3s;
     white-space: nowrap;
   }
 
-  .marquee__item:hover .marquee__logo {
-    opacity: 1;
-    filter: none;
-  }
-
-  .marquee__item:hover .marquee__fallback {
+  .marquee__item:hover {
     color: var(--accent);
   }
 
@@ -142,7 +76,7 @@ const track = [...exchanges, ...exchanges];
       flex-wrap: wrap;
       justify-content: center;
       width: 100%;
-      gap: 1rem 1.25rem;
+      gap: 1rem 2rem;
     }
 
     .marquee {
