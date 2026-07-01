@@ -10,7 +10,7 @@ const links = [
 
 <header class="nav">
   <div class="container nav__inner">
-    <a href="#" class="nav__logo" aria-label="Viraliza home">
+    <a href="/" class="nav__logo" aria-label="Viraliza home">
       <Logo variant="nav" />
     </a>
 
@@ -43,35 +43,6 @@ const links = [
     </nav>
   </div>
 </header>
-
-<script>
-  const toggle = document.getElementById("menu-toggle");
-  const menu = document.getElementById("mobile-menu");
-
-  toggle?.addEventListener("click", () => {
-    const open = menu?.hasAttribute("hidden");
-    if (open) {
-      menu?.removeAttribute("hidden");
-      toggle.setAttribute("aria-expanded", "true");
-      toggle.setAttribute("aria-label", "Close menu");
-      document.body.style.overflow = "hidden";
-    } else {
-      menu?.setAttribute("hidden", "");
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-label", "Open menu");
-      document.body.style.overflow = "";
-    }
-  });
-
-  menu?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      menu.setAttribute("hidden", "");
-      toggle?.setAttribute("aria-expanded", "false");
-      toggle?.setAttribute("aria-label", "Open menu");
-      document.body.style.overflow = "";
-    });
-  });
-</script>
 
 <style>
   .nav {

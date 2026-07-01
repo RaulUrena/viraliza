@@ -83,24 +83,3 @@
   }
 </style>
 
-<script>
-  const video = document.querySelector<HTMLVideoElement>(".site-bg__video");
-  const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-  function syncVideo(): void {
-    if (!video) return;
-
-    if (motionQuery.matches) {
-      video.pause();
-      video.removeAttribute("src");
-      video.load();
-      return;
-    }
-
-    video.muted = true;
-    video.play().catch(() => {});
-  }
-
-  syncVideo();
-  motionQuery.addEventListener("change", syncVideo);
-</script>

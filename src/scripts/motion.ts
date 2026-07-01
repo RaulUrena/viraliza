@@ -3,6 +3,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "lenis/dist/lenis.css";
 
+const ANCHOR_PATTERN = /^#[A-Za-z][\w-]*$/;
+
 function shouldAnimate(): boolean {
   return !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
@@ -11,14 +13,80 @@ function isMobile(): boolean {
   return window.matchMedia("(max-width: 767px)").matches;
 }
 
+function resolveAnchorTarget(href: string | null): Element | null {
+  if (!href || !ANCHOR_PATTERN.test(href)) return null;
+  return document.querySelector(href);
+}
+
+function initSiteBackground(): void {
+  const video = document.querySelector<HTMLVideoElement>(".site-bg__video");
+  const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  function syncVideo(): void {
+    if (!video) return;
+
+    if (motionQuery.matches) {
+      video.pause();
+      video.removeAttribute("src");
+      video.load();
+      return;
+    }
+
+    video.muted = true;
+    video.play().catch(() => {});
+  }
+
+  syncVideo();
+  motionQuery.addEventListener("change", syncVideo);
+}
+
+function closeMobileMenu(): void {
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  if (!menu || !toggle) return;
+
+  menu.setAttribute("hidden", "");
+  toggle.setAttribute("aria-expanded", "false");
+  toggle.setAttribute("aria-label", "Open menu");
+  document.body.style.overflow = "";
+}
+
+function initNav(): void {
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  if (!toggle || !menu) return;
+
+  toggle.addEventListener("click", () => {
+    const open = menu.hasAttribute("hidden");
+    if (open) {
+      menu.removeAttribute("hidden");
+      toggle.setAttribute("aria-expanded", "true");
+      toggle.setAttribute("aria-label", "Close menu");
+      document.body.style.overflow = "hidden";
+    } else {
+      closeMobileMenu();
+    }
+  });
+
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMobileMenu);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !menu.hasAttribute("hidden")) {
+      closeMobileMenu();
+      toggle.focus();
+    }
+  });
+}
+
 function initAnchorScroll(): void {
   const nav = document.querySelector<HTMLElement>(".nav");
 
   document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", (e) => {
       const id = anchor.getAttribute("href");
-      if (!id || id === "#") return;
-      const target = document.querySelector(id);
+      const target = resolveAnchorTarget(id);
       if (!target) return;
 
       if (!isMobile()) return;
@@ -76,6 +144,8 @@ function initInteractiveCards(): void {
 }
 
 export function initMotion(): void {
+  initSiteBackground();
+  initNav();
   initAnchorScroll();
 
   if (!shouldAnimate()) return;
@@ -208,9 +278,7 @@ export function initMotion(): void {
 
     document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener("click", (e) => {
-        const id = anchor.getAttribute("href");
-        if (!id || id === "#") return;
-        const target = document.querySelector(id);
+        const target = resolveAnchorTarget(anchor.getAttribute("href"));
         if (!target) return;
         e.preventDefault();
         lenis.scrollTo(target, { offset: -72 });
